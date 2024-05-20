@@ -38,6 +38,6 @@ jobs:
 
     - name: Create GitHub Release
       run: |
-        gh release create ${{ env.new_version }} preview.zip --title "Release ${{ env.new_version }}" --notes "Automated release of main.py"
+        gh release create ${{ env.new_version }} main.zip --title "Release ${{ env.new_version }}" --notes "Automated release of main.py"
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
