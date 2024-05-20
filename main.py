@@ -7,8 +7,6 @@ from huaweicloudsdkecs.v2 import EcsClient, BatchStopServersRequest, BatchStopSe
 from huaweicloudsdkcore.exceptions import exceptions
 
 
-
-
 def handler(event, context):
     ak = context.getSecurityAccessKey()
     sk = context.getSecuritySecretKey()
