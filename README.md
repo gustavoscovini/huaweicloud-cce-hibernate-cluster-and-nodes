@@ -20,7 +20,7 @@ The developers of this tool are not responsible for data loss neither for unexpe
 
 ## FunctionGraph
 
-1. Download the latest release, we will use the `main.zip` file.
+1. Download the latest [release](https://github.com/gustavoscovini/huaweicloud-cce-hibernate-cluster-and-nodes/releases), we will use the `main.zip` file.
 
 2. In Huawei Cloud Console, choose the FunctionGraph service
 
