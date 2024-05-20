@@ -38,7 +38,7 @@ The developers of this tool are not responsible for data loss neither for unexpe
 
     - `project_id`: The project ID of your region
     - `cluster_id`: The ID of your cluster
-    - `region`: The [region](https://developer.huaweicloud.com/intl/en-us/endpoint) The region where your cluster is deployed
+    - `region`: The [region](https://developer.huaweicloud.com/intl/en-us/endpoint) where your cluster is deployed
 
 9. Click on "Test" and run the code.
 
