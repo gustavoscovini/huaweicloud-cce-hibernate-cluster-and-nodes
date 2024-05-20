@@ -53,7 +53,6 @@ def handler(event, context):
     except exceptions.ClientRequestException as e:
         print_error("stopping servers", e)
 
-
 def print_error(action, e):
     print(f"Error occurred while {action}:")
     print(f"Status Code: {e.status_code}")
