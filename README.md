@@ -13,34 +13,35 @@ The developers of this tool are not responsible for data loss neither for unexpe
 
 ## Importing CCE and ECS libraries to FunctionGraph
 
-1. Clone the  [Huawei Python SDK](https://github.com/huaweicloud/huaweicloud-sdk-python-v3) repository, extract and search for `huaweicloudsdkcce` and `hauweicloudsdkecs` folders and zip them separately into two files: `huaweicloudsdkecs.zip` and `huaweicloudsdkcce.zip`
-2. On the FunctionGraph console, click on `Functions > Dependencies` and "Create Dependency"
-3. Enter the information of each of the libraries and upload each one of them to Huawei Cloud and change the runtime to **Python.3.9**.
-4. Do that for the two dependencies.
+1. In the releases of this repository, find the `huaweicloudsdkcce.zip` and `huaweicloudsdkecs.zip` and download it.
+2. In the FunctionGraph console, click on `Functions > Dependencies` and "Create Dependency", set the name as **huaweicloudskdecs**, upload the `huaweicloudsdkecs.zip` and change the runtime to **Python.3.9**.
+3. Create another dependency, setting the name **huaweicloudskdcce** and upload `huaweicloudsdkcce.zip` and also change the runtime to **Python.3.9**.
 
 ## FunctionGraph
 
-1. Download the latest [release](https://github.com/gustavoscovini/huaweicloud-cce-hibernate-cluster-and-nodes/releases), we will use the `main.zip` file.
+1. Download the latest [release](https://github.com/gustavoscovini/huaweicloud-cce-hibernate-cluster-and-nodes/releases), we will use the `index.zip` file.
 
 2. In Huawei Cloud Console, choose the FunctionGraph service
 
-3. In the Agency field, **Create an Agency** for **Cloud services**. Select **FunctionGraph** and assign the following permissions to this agency: **CCE Administrator**, **ECS CommonOperations**, and **APIG Administrator**.
+3. Click on **Create Function > Create from Scratch**
 
-4. Create a Event Function from scratch, selecting **Python 3.9** as Runtime.
+4. Create a Event Function, select **Python 3.9** as Runtime.
 
-5. In the Code Source, click on "Upload" on the top right corner, select "Local ZIP" and upload the `main.zip` file.
+5. In the Agency field, click **Create an Agency > Create Agency**, select **Cloud services** and in the Cloud service box, select **FunctionGraph** and assign the following permissions to this agency: **CCE Administrator**, **ECS CommonOperations**, and **APIG Administrator**.
 
-6. In the Basic Information, click on "Edit" and change the "Execution Timeout(s)" to 30 seconds.
+6. In the Code Source, click on "Upload" on the top right corner, select "Local ZIP" and upload the `index.zip` file.
 
-7. In the Dependencies, click "Add" and add `huaweicloudskecs` and `huaweicloudsdkcce` private libraries that were previous imported.
+7. In the Basic Information, click on "Edit" and change the "Execution Timeout(s)" to 30 seconds.
 
-8. In the configuration, click on **Environment Variables** and add three variables:
+8. In the Dependencies, click "Add" and add `huaweicloudsdkecs` and `huaweicloudsdkcce` private libraries that were previously imported.
+
+9. In the configuration, click on **Environment Variables** and add three variables:
 
     - `project_id`: The project ID of your region
     - `cluster_id`: The ID of your cluster
     - `region`: The [region](https://developer.huaweicloud.com/intl/en-us/endpoint) where your cluster is deployed
 
-9. Click on "Test" and run the code.
+10. Click on "Test" and run the code.
 
 ## References
 
