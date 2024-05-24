@@ -4,10 +4,7 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'index.py'
-      - 'dependencies/huaweicloudsdkecs' # Watch for any changes inside the dependencies folder
-      - 'dependencies/huaweicloudsdkcce'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -44,6 +41,7 @@ jobs:
       run: zip -r huaweicloudsdkecs.zip dependencies/huaweicloudsdkecs
 
     - name: Create GitHub Release
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
       run: |
         gh release create ${{ env.new_version }} index.zip huaweicloudsdkcce.zip huaweicloudsdkecs.zip --title "Release ${{ env.new_version }}" --notes "Automated release of index.py, huaweicloudsdkcce folder, and huaweicloudsdkecs folder"
       env:
