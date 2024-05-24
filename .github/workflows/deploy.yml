@@ -1,12 +1,13 @@
-name: Generate a zip file of index-preview.py and Create GitHub Release
+name: Generate zip files and Create GitHub Release
 
 on:
   push:
     branches:
       - main
     paths:
-      - 'main.py'
-
+      - 'index.py'
+      - 'dependencies/huaweicloudsdkecs' # Watch for any changes inside the dependencies folder
+      - 'dependencies/huaweicloudsdkcce'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -33,11 +34,17 @@ jobs:
         echo "new_version=$new_version" >> $GITHUB_ENV
         echo "New version: $new_version"
     
-    - name: Generate a zip file of index-preview.py
-      run: zip main.zip main.py
+    - name: Generate a zip file of index.py
+      run: zip index.zip index.py
+
+    - name: Generate a zip file of huaweicloudsdkcce folder
+      run: zip -r huaweicloudsdkcce.zip dependencies/huaweicloudsdkcce
+
+    - name: Generate a zip file of huaweicloudsdkecs folder
+      run: zip -r huaweicloudsdkecs.zip dependencies/huaweicloudsdkecs
 
     - name: Create GitHub Release
       run: |
-        gh release create ${{ env.new_version }} main.zip --title "Release ${{ env.new_version }}" --notes "Automated release of main.py"
+        gh release create ${{ env.new_version }} index.zip huaweicloudsdkcce.zip huaweicloudsdkecs.zip --title "Release ${{ env.new_version }}" --notes "Automated release of index.py, huaweicloudsdkcce folder, and huaweicloudsdkecs folder"
       env:
         GITHUB_TOKEN: ${{ secrets.RELEASE_TOKEN }}
