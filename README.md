@@ -11,12 +11,6 @@ The developers of this tool are not responsible for data loss neither for unexpe
 - Function Graph: <https://www.huaweicloud.com/intl/en-us/product/functiongraph.html>
 - Huawei Python SDK: <https://support.huaweicloud.com/intl/en-us/ssdk-live/live_18_0003.html>
 
-## Importing CCE and ECS libraries to FunctionGraph
-
-1. In the releases of this repository, find the `huaweicloudsdkcce.zip` and `huaweicloudsdkecs.zip` and download it.
-2. In the FunctionGraph console, click on `Functions > Dependencies` and "Create Dependency", set the name as **huaweicloudskdecs**, upload the `huaweicloudsdkecs.zip` and change the runtime to **Python.3.9**.
-3. Create another dependency, setting the name **huaweicloudskdcce** and upload `huaweicloudsdkcce.zip` and also change the runtime to **Python.3.9**.
-
 ## FunctionGraph
 
 1. Download the latest [release](https://github.com/gustavoscovini/huaweicloud-cce-hibernate-cluster-and-nodes/releases), we will use the `index.zip` file.
@@ -33,7 +27,7 @@ The developers of this tool are not responsible for data loss neither for unexpe
 
 7. In the Basic Information, click on "Edit" and change the "Execution Timeout(s)" to 30 seconds.
 
-8. In the Dependencies, click "Add" and add `huaweicloudsdkecs` and `huaweicloudsdkcce` private libraries that were previously imported.
+8. In the Dependencies, click "Add" and add `huaweicloudsdkcce_python39` and `huaweicloudsdk_ecs_core_py3.9` public libraries
 
 9. In the configuration, click on **Environment Variables** and add three variables:
 
