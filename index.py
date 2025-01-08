@@ -54,20 +54,21 @@ def handler(event, context):
                 print(response_awake_C)
             except exceptions.ClientRequestException as e:
                 print_error("stopping cluster", e)
+            try:
+                print("trying to start server")
+                request = BatchStartServersRequest()
+                list_servers_to_start = [ServerId(id=uid) for uid in ids]
+                request.body = BatchStartServersRequestBody(os_start=BatchStartServersOption(servers=list_servers_to_start))
+
+                response = ecs_client.batch_start_servers(request)
+                print(response)
+            
+            except exceptions.ClientRequestException as e:
+                print_error("stopping servers". e)
 
     except exceptions.ClientRequestException as e:
         print("Could not stop servers")
-        print("trying to start servers")
-        try:
-            request = BatchStartServersRequest()
-            list_servers_to_start = [ServerId(id=uid) for uid in ids]
-            request.body = BatchStartServerRequestBody(os_start=BatchStartServersRequestOption(servers=list_servers_to_start))
-
-            response = ecs_client.batch_start_servers(request)
-            print(response)
-            
-        except exceptions.ClientRequestException as e:
-            print_error("stopping servers". e)
+        
         
 
 def print_error(action, e):
