@@ -1,9 +1,8 @@
 from huaweicloudsdkcore.auth.credentials import BasicCredentials
 from huaweicloudsdkcce.v3.region.cce_region import CceRegion
-from huaweicloudsdkcce.v3 import CceClient, ListNodesRequest, HibernateClusterRequest
+from huaweicloudsdkcce.v3 import *
 from huaweicloudsdkecs.v2.region.ecs_region import EcsRegion
-from huaweicloudsdkecs.v2 import EcsClient, BatchStopServersRequest, BatchStopServersRequestBody, \
-    BatchStopServersOption, ServerId
+from huaweicloudsdkecs.v2 import *
 from huaweicloudsdkcore.exceptions import exceptions
 
 
