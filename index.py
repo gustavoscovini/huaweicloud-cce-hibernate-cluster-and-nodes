@@ -48,10 +48,28 @@ def handler(event, context):
             response_hibernate_C = cce_client.hibernate_cluster(HibernateClusterRequest(cluster_id=cluster_id))
             print(response_hibernate_C)
         except exceptions.ClientRequestException as e:
-            print_error("stopping servers", e)
+            print("could not hibernate cluster")
+            print("trying to wake up cluster")
+            try:
+                response_awake_C = cce_client.awake_cluster(AwakeClusterRequest(cluster_id=cluster_id))
+                print(response_awake_C)
+            except exceptions.ClientRequestException as e:
+                print_error("stopping cluster", e)
 
     except exceptions.ClientRequestException as e:
-        print_error("stopping servers", e)
+        print("Could not stop servers")
+        print("trying to start servers")
+        try:
+            request = BatchStartServersRequest()
+            list_servers_to_start = [ServerId(id=uid) for uid in ids]
+            request.body = BatchStartServerRequestBody(os_start=BatchStartServersRequestOption(servers=list_servers_to_start))
+
+            response = ecs_client.batch_start_servers(request)
+            print(response)
+            
+        except exceptions.ClientRequestException as e:
+            print_error("stopping servers". e)
+        
 
 def print_error(action, e):
     print(f"Error occurred while {action}:")
